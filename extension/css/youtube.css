@@ -1,0 +1,70 @@
+/* Page-level styles, injected by the browser from the manifest (so they are
+   not subject to the page's CSP). Everything here is inert until the content
+   script adds the matching class to <html>. */
+
+/* Cinema mode: dim everything except the player and the control bar. */
+html.yte-cinema,
+html.yte-cinema body,
+html.yte-cinema ytd-app,
+html.yte-cinema ytd-watch-flexy {
+  background: #000 !important;
+  --yt-spec-base-background: #000;
+  --yt-spec-general-background-a: #000;
+}
+html.yte-cinema ytd-masthead,
+html.yte-cinema #below,
+html.yte-cinema #secondary,
+html.yte-cinema #comments {
+  opacity: 0.12;
+  transition: opacity 0.25s ease;
+}
+html.yte-cinema ytd-masthead:hover,
+html.yte-cinema #below:hover,
+html.yte-cinema #secondary:hover,
+html.yte-cinema #comments:hover {
+  opacity: 1;
+}
+
+/* Hide options. CSS only: YouTube's own nodes are never removed or edited
+   (removing them breaks infinite scroll and loading elsewhere). */
+html.yte-hide-comments ytd-comments#comments { display: none !important; }
+html.yte-hide-related #related,
+html.yte-hide-related ytd-watch-next-secondary-results-renderer { display: none !important; }
+html.yte-hide-chat #chat-container,
+html.yte-hide-chat ytd-live-chat-frame { display: none !important; }
+html.yte-hide-cards .ytp-ce-element,
+html.yte-hide-cards .ytp-ce-covering-overlay,
+html.yte-hide-cards .ytp-cards-teaser,
+html.yte-hide-cards .ytp-cards-button,
+html.yte-hide-cards .ytp-endscreen-content { display: none !important; }
+
+/* Hide Shorts. CSS ONLY: nothing is ever removed from YouTube's result lists.
+   (Deleting nodes there breaks infinite scroll: the "load more" sentinel
+   stops firing and the page spins forever. display:none keeps every node in
+   place, so loading keeps working.)
+   Rules only match Shorts-specific elements, and never the continuation
+   sentinel (ytd-continuation-item-renderer). */
+
+/* Shorts shelves: search, home, subscriptions, watch page */
+html.yte-hide-shorts ytd-reel-shelf-renderer,
+html.yte-hide-shorts ytd-rich-shelf-renderer[is-shorts],
+html.yte-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html.yte-hide-shorts grid-shelf-view-model:has(ytm-shorts-lockup-view-model) {
+  display: none !important;
+}
+
+/* Individual Shorts mixed into ordinary video lists */
+html.yte-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
+html.yte-hide-shorts ytd-compact-video-renderer:has(a[href^="/shorts/"]),
+html.yte-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html.yte-hide-shorts ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html.yte-hide-shorts yt-lockup-view-model:has(a[href^="/shorts/"]) {
+  display: none !important;
+}
+
+/* Navigation: sidebar entries and the channel "Shorts" tab */
+html.yte-hide-shorts ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html.yte-hide-shorts ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html.yte-hide-shorts yt-tab-shape[tab-title="Shorts"] {
+  display: none !important;
+}

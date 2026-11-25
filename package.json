@@ -1,0 +1,6 @@
+{
+  "name": "safari-youtube-enhancer",
+  "private": true,
+  "version": "0.7.0",
+  "scripts": { "test": "node --test tests/" }
+}

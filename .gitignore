@@ -1,0 +1,53 @@
+# --- Xcode: per-user state (contains your username and window layout) ---
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+
+# --- Xcode: build output ---
+build/
+DerivedData/
+*.xcarchive
+*.dSYM/
+*.dSYM.zip
+*.ipa
+*.app
+*.appex
+*.moved-aside
+*.hmap
+
+# --- Signing material: never commit these ---
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.cer
+*.certSigningRequest
+*.pem
+*.key
+
+# --- Secrets and local config ---
+.env
+.env.*
+*.local
+local.xcconfig
+Local.xcconfig
+
+# --- Logs and OS junk ---
+*.log
+.DS_Store
+.AppleDouble
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# --- Node (only used for the tests; there are no dependencies) ---
+node_modules/
+npm-debug.log*
+.npm/
+
+# --- Editor / tool folders ---
+.idea/
+.vscode/
+*.swp
+.claude/
